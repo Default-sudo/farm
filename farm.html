@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Diary | Farm Management</title>
+    <link rel="stylesheet" href="farm.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>🌱 FarmDiary</h2>
+
+    <nav>
+        <a href="#dashboard" class="active">🏠 Dashboard</a>
+        <a href="#activities">📖 Farm Diary</a>
+        <a href="#crops">🌾 Crops</a>
+        <a href="#livestock">🐄 Livestock</a>
+        <a href="#finance">💰 Finance</a>
+        <a href="#notes">📝 Farm Notes</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <p>Growing a better future 🌿</p>
+    </div>
+</div>
+
+<main class="main-content">
+
+    <header>
+        <div>
+            <h1>Farm Dashboard</h1>
+            <p id="today"></p>
+        </div>
+        <div class="profile">👨‍🌾 Farmer</div>
+    </header>
+
+    <section id="dashboard">
+        <div class="welcome">
+            <div>
+                <h2>Welcome to Your Farm! 🌱</h2>
+                <p>Keep track of your farm and grow your success every day.</p>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <span>🌾</span>
+                <p>Total Crops</p>
+                <h2 id="cropCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>🐄</span>
+                <p>Livestock</p>
+                <h2 id="animalCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>📖</span>
+                <p>Activities</p>
+                <h2 id="activityCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>💰</span>
+                <p>Total Expenses</p>
+                <h2 id="expenseTotal">KES 0</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities" class="section">
+        <div class="section-heading">
+            <div>
+                <h2>📖 Daily Farm Diary</h2>
+                <p>Record everything happening on your farm.</p>
+            </div>
+        </div>
+
+        <form id="activityForm" class="form-card">
+            <h3>Add Daily Activity</h3>
+
+            <div class="form-grid">
+                <input type="date" id="activityDate" required>
+
+                <select id="activityType" required>
+                    <option value="">Select activity</option>
+                    <option>Planting</option>
+                    <option>Harvesting</option>
+                    <option>Watering</option>
+                    <option>Fertilizing</option>
+                    <option>Weeding</option>
+                    <option>Livestock Care</option>
+                    <option>Other</option>
+                </select>
+
+                <input type="text" id="activityTitle"
+                       placeholder="Activity title" required>
+
+                <textarea id="activityDescription"
+                          placeholder="Describe your farm activity..."
+                          required></textarea>
+            </div>
+
+            <button type="submit">+ Save Activity</button>
+        </form>
+
+        <div id="activityList" class="record-list"></div>
+    </section>
+
+    <section id="crops" class="section">
+        <h2>🌾 Crop Management</h2>
+        <p>Manage your crops and planting records.</p>
+
+        <form id="cropForm" class="form-card">
+            <h3>Add New Crop</h3>
+            <div class="form-grid">
+                <input id="cropName" placeholder="Crop name (e.g. Maize)" required>
+                <input id="cropArea" placeholder="Farm size (e.g. 2 acres)" required>
+                <input type="date" id="plantDate" required>
+                <input type="date" id="harvestDate">
+            </div>
+            <button type="submit">+ Add Crop</button>
+        </form>
+
+        <div id="cropList" class="record-list"></div>
+    </section>
+
+    <section id="livestock" class="section">
+        <h2>🐄 Livestock Management</h2>
+        <p>Keep records of your farm animals.</p>
+
+        <form id="animalForm" class="form-card">
+            <h3>Add Livestock</h3>
+            <div class="form-grid">
+                <select id="animalType" required>
+                    <option value="">Select animal</option>
+                    <option>Cattle</option>
+                    <option>Goats</option>
+                    <option>Sheep</option>
+                    <option>Chicken</option>
+                    <option>Pigs</option>
+                    <option>Other</option>
+                </select>
+                <input type="number" id="animalQuantity"
+                       placeholder="Number of animals" min="1" required>
+                <input type="text" id="animalNotes"
+                       placeholder="Notes (optional)">
+            </div>
+            <button type="submit">+ Add Livestock</button>
+        </form>
+
+        <div id="animalList" class="record-list"></div>
+    </section>
+
+    <section id="finance" class="section">
+        <h2>💰 Farm Finance</h2>
+        <p>Monitor your farm income and expenses.</p>
+
+        <form id="financeForm" class="form-card">
+            <h3>Record Transaction</h3>
+
+            <div class="form-grid">
+                <select id="transactionType" required>
+                    <option value="">Transaction type</option>
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+
+                <input type="number" id="transactionAmount"
+                       placeholder="Amount (KES)" min="0.01"
+                       step="0.01" required>
+
+                <input type="text" id="transactionDescription"
+                       placeholder="Description" required>
+
+                <input type="date" id="transactionDate" required>
+            </div>
+
+            <button type="submit">+ Save Transaction</button>
+        </form>
+
+        <div class="stats finance-stats">
+            <div class="stat-card">
+                <span>📈</span>
+                <p>Total Income</p>
+                <h2 id="incomeTotal">KES 0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>📉</span>
+                <p>Total Expenses</p>
+                <h2 id="financeExpense">KES 0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>💵</span>
+                <p>Profit / Loss</p>
+                <h2 id="profitTotal">KES 0</h2>
+            </div>
+        </div>
+
+        <div id="financeList" class="record-list"></div>
+    </section>
+
+    <section id="notes" class="section">
+        <h2>📝 Farm Notes</h2>
+        <p>Write down your farming ideas, observations and reminders.</p>
+
+        <form id="noteForm" class="form-card">
+            <h3>Write a Note</h3>
+            <input type="text" id="noteTitle"
+                   placeholder="Note title" required>
+            <textarea id="noteContent"
+                      placeholder="Write your note here..."
+                      required></textarea>
+            <button type="submit">+ Save Note</button>
+        </form>
+
+        <div id="noteList" class="record-list"></div>
+    </section>
+
+    <footer>
+        <p>© 2026 FarmDiary | Growing Together 🌱 | Phillcode</p>
+    </footer>
+
+</main>
+
+<script src="farm.js"></script>
+</body>
+</html>
